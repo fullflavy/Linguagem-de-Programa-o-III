@@ -12,13 +12,13 @@ public class Contato{
 		this.ano = getAno();
 	}
 	
-	 public void setNome(String nome){
-        this.nome = nome;
-    }
+	public void setNome(String nome){
+        	this.nome = nome;
+    	}
 
-    public void setEmail(String email){
-        this.email = email;
-    }
+    	public void setEmail(String email){
+        	this.email = email;
+    	}
 	
 	public void setTelefone(String telefone){
 		this.telefone = telefone;
