@@ -24,18 +24,6 @@ public class Contato4{
     this(nome, "ana@gmail.com", telefone);
   }
 	
-	public void setNome(String nome){
-        	this.nome = nome;
-    	}
-
-    	public void setEmail(String email){
-        	this.email = email;
-    	}
-	
-	public void setTelefone(String telefone){
-		this.telefone = telefone;
-	}
-	
 	public String getNome(){
 		return this.nome;
 	}
