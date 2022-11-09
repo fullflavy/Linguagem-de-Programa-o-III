@@ -1,4 +1,4 @@
-class LampThreeStatus {
+public class LampThreeStatus {
   private int lampStatus = 0;
   private final int on = 1, off = 0, half = 2;
 
