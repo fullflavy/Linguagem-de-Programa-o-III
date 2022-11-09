@@ -1,4 +1,4 @@
-class Lamp {
+public class Lamp {
   private int lampStatus = 0;
 
   private boolean verLamptatus(int lampStatus){  //se a lampada esta acesa retorna verdadeiro senao falso.
