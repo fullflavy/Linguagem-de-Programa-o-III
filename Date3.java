@@ -21,7 +21,7 @@ public class Date3{
 	}
 	
 	public int getDay(){
-		return day;
+		return day; 
 	}
 	
 	public int getMonth(){
