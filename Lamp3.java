@@ -1,4 +1,4 @@
-class Lamp3{
+public class Lamp3{
   private int lampStatus = 0;
 
   public Lamp3(int lampStatus){
