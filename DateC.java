@@ -1,4 +1,4 @@
-public class Main{
+public class DateC{
 	public static void main(String[]args){
 		Date data = new Date();
 		
