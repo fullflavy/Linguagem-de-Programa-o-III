@@ -1,12 +1,3 @@
-/*Lista 03: Usando como base classe Data implementada na lista anterior adicione os seguintes métodos:
-• Inclua o construtor da classe
-
-• boolean isPrevious(Data outraData): retorna verdadeiro se a data, que passamos por parâmetro, é anterior a data do objeto;
-
-• int howManyDays(Data outraData): retorna a quantidade de dias até a data enviada como parâmetros, se a data for anterior o valor retornado deve ser negativo;
-
-• String dayOfWeek(): retorna o dia da semana representado pela data.*/
-
 public class Date3{
 	private int day, month, year;
 	
