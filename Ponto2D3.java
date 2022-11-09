@@ -1,7 +1,3 @@
-/*Refatore a classe Ponto2D desenvolvida na lista anterior para atender os seguintes requisitos:
-Inclua o construtor da classe
-Os pontos são imutáveis uma vez instanciados seus valores não podem ser modificados.*/
-
 public class Ponto2D3{
 	private int x, y;
 	
@@ -76,9 +72,9 @@ public class Ponto2D3{
 		return (-1);
 	}
 	
-	public double distance(Ponto2D z){    //calcula a distancia da origem ao ponto. OBS: nessa função em especifico eu gostaria de saber se há como fazer com o tipo float.
+	public double distance(Ponto2D z){    //calcula a distancia da origem ao ponto. 
 		double distance;
-		double x = (double)z.getX(), y = (double)z.getY();                            //só consegui usando double. 
+		double x = (double)z.getX(), y = (double)z.getY();                            
 
         return Math.sqrt(((x - 0) * (x - 0)) + ((y - 0) * (y - 0)));
 	}
