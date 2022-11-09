@@ -3,17 +3,11 @@ public class Date3{
 	
 	Date3 outraData = new Date3();
 	
-	public Date3(int day, int month, int year){  //construtor da classe.
-		this.day = day;
-		this.month = month;
-		this.year = year;
-	}
-	
-	public void setDate(int initDay, int initMonth, int initYear){
-		if(dateVerification(initDay, initMonth, initYear)){
-			day = initDay;
-			month = initMonth;
-			year = initYear;
+	public Date3(int day, int month, int year){      //construtor da classe.
+		if(dateVerification(day, month, year)){
+			this.day = day;
+			this.month = month;
+			this.year = year;
 		}else{
 			System.out.printf("Invalid Date!\n");
 			System.exit(-1);
