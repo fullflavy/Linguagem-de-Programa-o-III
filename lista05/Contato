@@ -1,10 +1,10 @@
-public class Contato4{
+public class Contato{
 	private String nome, email, telefone;
 	private int dia, mes, ano, tempo;
 	private final int diaAtual = 31, mesAtual = 12, anoAtual = 2022;
     private static int count = 0;          
 	
-    public Contato4(String nome, String email, String telefone, int dia, int mes, int ano){  //construtor completo
+    public Contato(String nome, String email, String telefone, int dia, int mes, int ano){  //construtor completo
         setNome(nome);
         setEmail(email);
         setTelefone(telefone);
@@ -20,11 +20,11 @@ public class Contato4{
         count++;
     }
 
-    public Contato4(){
+    public Contato(){
         this("Ana", "ana@gmail.com", "8876-9023", 8, 12, 2002);
     }
 
-    public Contato4(String nome, String email, String telefone){ 
+    public Contato(String nome, String email, String telefone){ 
         this(nome, email, telefone, 8, 12, 2002);
     }
 
