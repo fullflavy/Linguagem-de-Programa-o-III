@@ -1,127 +1,201 @@
-/*Lista 03: Usando como base classe Data implementada na lista anterior adicione os seguintes métodos:
-• Inclua o construtor da classe
+public class Data{
+	// Atributos
+    private int dia;
+	private int mes;
+	private int ano;
 
-• boolean isPrevious(Data outraData): retorna verdadeiro se a data, que passamos por parâmetro, é anterior a data do objeto;
+	//Construtor
+    public Data(int dia, int mes, int ano){
+        setData(dia, mes, ano);
+    }
 
-• int howManyDays(Data outraData): retorna a quantidade de dias até a data enviada como parâmetros, se a data for anterior o valor retornado deve ser negativo;
+    public Data(){
+        this.dia = 28;
+        this.mes = 2;
+        this.ano = 2002;
+    }
 
-• String dayOfWeek(): retorna o dia da semana representado pela data.*/
+    public Data(Data data){
+        this(data.getDia(), data.getMes(), data.getAno());
+    }
 
-public class Date3{
-	private int day, month, year;
-	
-	public Date3(int day, int month, int year){  //construtor da classe.
-		this.day = day;
-		this.month = month;
-		this.year = year;
-	}
-	
-	public void setDate(int initDay, int initMonth, int initYear){
-		if(dateVerification(initDay, initMonth, initYear)){
-			day = initDay;
-			month = initMonth;
-			year = initYear;
-		}else{
-			System.out.printf("Invalid Date!\n");
-			System.exit(-1);
+    public void setData(){
+		if(verificaData(dia, mes, ano)){
+			this.dia = dia;
+			this.mes = mes;
+			this.ano = ano;
+	    }else{
+			mensagemErro();
 		}
+    }
+    
+	public int getDia(){
+		return dia;
 	}
 	
-	public int getDay(){
-		return day;
+	public int getMes(){
+		return mes;
 	}
 	
-	public int getMonth(){
-		return month;
+	public int getAno(){
+		return ano;
 	}
 	
-	public int getYear(){
-		return year;
-	}
-	
-	private boolean dateVerification(int initDay, int initMonth, int initYear){   //verifica se a data é valida.
-		if(initMonth >= 1 && initMonth <= 12){
-			if(((initMonth == 2)&& (initDay >= 1) && (initDay <= 29) && isBissexto(initYear))){
-				return true;
-			}else if(((initMonth == 2) && (initDay >= 1) && (initDay <= 28))){
-				return true;
-			}else if(((initDay >= 1) && (initDay <= 31) && ((initMonth % 2 != 0) || (initMonth == 8)))){
-				return true;
-			}
+    public void inicializarData(){
+         dia = getDia();
+		 mes = getMes();
+		 ano = getAno();
+    }
+
+    public void imprimirData(){
+        System.out.printf("%02d/%02d/%d", this.dia, this.mes, this.ano);
+    }
+
+    public void imprimirDataExtenso(){
+        String mes[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+        System.out.printf("%02d de %s de %d.\n", this.dia, mes[(this.mes - 1)], this.ano);
+    }
+    
+	public boolean verificaData(int dia, int mes, int ano){
+		if((dia <= 0 || dia > 31) || (mes <= 0 || mes > 12)|| ano <= 0){
 			return false;
 		}
-		return false;
+		if((mes == 2) && (dia != 28) && (ano%4 != 0)){                       //se o ano nao eh bisexto
+			return false;
+		}
+		if((mes == 2) && (dia != 29) && (ano%4 == 0)){                      //se o ano eh bisexto
+			return false;  
+		}
+		if(dia > 30 && ((mes == 4)||(mes == 6)||(mes == 9)||(mes == 11))){  //para meses que deveriam ter 30 dias.
+			return false;
+		}
+		return true;
 	}
-	
-	public void printDate(){              //imprime a data.
-		System.out.printf("%02d de %02d de %d.\n", day, month, year);
-	}
-	
-	public void printDateExtensive(){    //imprime a data por extenso.
-		String m[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
-        System.out.printf("%d de %s de %d.\n", day, m[getMonth() - 1], year);
-	}
-	
-	public boolean isPrevious(Date3 outraData){    //retorna verdadeiro se a data do parametro for menor que a do objeto.
-        if(outraData.getYear() < this.year){
+
+	public boolean isPrevious(Data outraData){
+        if(outraData.getAno() < this.ano){
             return true;
-        }else if(outraData.getYear() > this.year){
+        }else if(outraData.getAno() > this.ano){
             return false;
         }else{
-            if(outraData.getMonth() < this.month){
+            if(outraData.getMes() < this.mes){
                 return true;
-            }else if(outraData.getMonth() > this.month){
+            }else if(outraData.getMes() > this.mes){
                 return false;
             }else{
-                if(outraData.getDay() < this.day){
+                if(outraData.getDia() < this.dia){
                     return true;
                 }
                 return false;
             }
         }
     }
-	
-	/*private int howManyDays(Date3 outraData){    //retorna a quatidade de dias, e se a data do parametro for menor, retorna negativo.
-		int y = outraData.getYear();
-		
-		if(!isPrevious(outraData)){
-			float dY = (float)(outraData.getYear() - this.year) - 1;
-            float dM1 = 12.0f - this.month;
-            float dM2 = outraData.getMonth() - 1.0f + 1;
-            float days = (dY * 365.25f) + ((dM1 + dM2) * 365.25f / 12);
-            return (int)day;
-		}else{
-			float dY = (float)((outraData.getYear() - this.year) * - 1) - 1;
-            float dM1 = 12.0f - outraData.getMonth();
-            float dM2 = this.month - 1.0f + 1;
-            float days = (dY * 365.25f) + ((dM1 + dM2) * 365.25f / 12);
-            return (int)(-days);
+    
+	//retorna o modulo de um numero.
+	private int mode(int n){
+    	if(n > 0){
+			return n;
+    	}else{
+			return ((-1) * n);
 		}
-	}*/
-	
-	public boolean isBissexto(int year){     //retorna verdadeiro se o ano é bissexto.
-		if((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0)){
-			return true;
-		}
-		return false;
+	}
+
+	 public boolean isPrevious(int dia, int mes, int ano){
+        if(ano < this.ano){
+            return true;
+        }else if(ano > this.ano){
+            return false;
+        }else{
+            if(mes < this.mes){
+                return true;
+            }else if(mes > this.mes){
+                return false;
+            }else{
+                if(dia < this.dia){
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
+
+	public int howManyDays(int dia, int mes, int ano){
+    	if(isPrevious(dia, mes, ano)){
+        	float difA = (float)mode(ano - this.ano) - 1;
+			float difM1 = 12.0f - mes;
+        	float difM2 = this.mes - 1.0f + 1;
+        	float dias = (difA * 365.25f) + ((difM1 + difMo2) * 365.25f / 12);
+        	return (int)(-dias);
+    	}else{
+       		float difA = (float)mode(ano - this.ano) - 1;
+			float difM1 = 12.0f - mes;
+        	float difM2 = this.mes - 1.0f + 1;
+        	float dias = (difA * 365.25f) + ((difM1 + difMo2) * 365.25f / 12);
+        	return (int)dias;
+    	}    
+	}
+
+	public void mensagemErro(){
+		System.out.printf("\nErro: data inexistente.");
+		System.exit(-1);
 	}
 	
-	public String dayOfWeek(Date3 outraData){   //retorna o dia da semana representado pela data.
-		int k = 0;
-		int d = outraData.getDay();
-		int m = outraData.getMonth();
-		int y = outraData.getYear();
-		String[] dExtenso = {"Sábado", "Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta"};
-		
-		if(m == 1){
-			k = d + 2 * 13 + ((3 * (13 + 1))/5) + y + y/4 - y/100 + y/400 + 2;
-		}else if(m == 2){
-			k = d + 2 * 14 + ((3 * (14 + 1))/5) + y + y/4 - y/100 + y/400 + 2;
-		}else{
-			k = d + 2*m + ((3 * (m + 1))/5) + y + y/4 - y/100 + y/400 + 2;
-		}
-		k = k%7;
-		
-		return dExtenso[k]; 
+	private static boolean isBisexto(Data d){
+    	if((d.getAno() % 4 == 0) && ((d.getAno() % 100 == 0) && (d.getAno() % 400 == 0))){
+    	    return true;
+    	}
+    	return false; 
 	}
+
+	public static int howManyDaysUntilEndYear(Data d){
+        int[] diaM = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int soma = 0;
+
+        if(Data.isBisexto(d)){
+            diaM[1] = 29;
+        }
+		for(int i = d.getMes(); i <= 12; i++){
+            soma = soma + diaM[i];
+    	}
+
+        return soma - d.getDia();
+	}
+
+	public static int howManyDaysUntilNextMonth(Data d){
+        int[] diaM = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+        if(Data.isBisexto(d)){
+            diaM[1] = 29;
+        }
+	
+        return diaM[d.getMes()] - d.getDia();
+    }
+
+	public String dayOfWeek(Data dD){
+    	    int d = dD.getDia();
+        	int m = dD.getMes();
+        	int y = dD.getAno();
+        	int k = 0;
+        	String[] daysWeek = {"Sabado", "Domingo","Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira"};
+
+        	if(m == 1){
+            	k = d + 2 * 13 + (3 * (13 + 1) / 5) + (y - 1) + ((y - 1) / 4) - ((y - 1) / 100) + ((y - 1) / 400) + 2;
+        	}else if(m == 2){
+        	    k = d + 2 * 14 + (3 * (14 + 1) / 5) + (y - 1) + ((y - 1) / 4) - ((y - 1) / 100) + ((y - 1) / 400) + 2;
+        	}else{
+        	    k = d + 2 * m + (3 * (m + 1) / 5) + y + (y / 4) - (y / 100) + (y / 400) + 2;
+        	}
+        	k = k % 7;
+        	return daysWeek[k];
+    }
+
+	public static String dayToPrintShort(Data d){
+        return d.getDia() + "/" + d.getMes() + "/" + d.getAno();
+    }
+
+	public static String dayToPrintLong(Data d){
+        String m[] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+        return d.getDia() + " de " + m[d.getMes() - 1] + " de " + d.getAno();
+    }
 }

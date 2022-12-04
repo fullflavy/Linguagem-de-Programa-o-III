@@ -56,7 +56,7 @@ public class Data{
         System.out.printf("%02d de %s de %d.\n", this.dia, mes[(this.mes - 1)], this.ano);
     }
     
-	public boolean verificarData(int dia, int mes, int ano){
+	public boolean verificaData(int dia, int mes, int ano){
 		if((dia <= 0 || dia > 31) || (mes <= 0 || mes > 12)|| ano <= 0){
 			return false;
 		}
@@ -141,7 +141,7 @@ public class Data{
 	}
 	
 	private static boolean isBisexto(Data d){
-    	if((d.getYAno() % 4 == 0) && ((d.getAno() % 100 == 0) && (d.getAno() % 400 == 0))){
+    	if((d.getAno() % 4 == 0) && ((d.getAno() % 100 == 0) && (d.getAno() % 400 == 0))){
     	    return true;
     	}
     	return false; 
@@ -171,10 +171,10 @@ public class Data{
         return diaM[d.getMes()] - d.getDia();
     }
 
-	public String dayOfWeek(Data d){
-    	    int d = d.getDia();
-        	int m = d.getMes();
-        	int y = d.getAno();
+	public String dayOfWeek(Data dD){
+    	    int d = dD.getDia();
+        	int m = dD.getMes();
+        	int y = dD.getAno();
         	int k = 0;
         	String[] daysWeek = {"Sabado", "Domingo","Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira"};
 
@@ -185,7 +185,7 @@ public class Data{
         	}else{
         	    k = d + 2 * m + (3 * (m + 1) / 5) + y + (y / 4) - (y / 100) + (y / 400) + 2;
         	}
-        	k = k % 7
+        	k = k % 7;
         	return daysWeek[k];
     }
 

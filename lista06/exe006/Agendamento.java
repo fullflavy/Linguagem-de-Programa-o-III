@@ -1,9 +1,9 @@
 public class Agendamento{
-	private Date3 agendamentoD;
+	private Data agendamentoD;
 	private Time agendamentoT;
-	private Contato3 agendamentoC;
+	private Contato agendamentoC;
 	//contrutor:
-	public Agendamento(Date3 agendamentoDD, Time agendamentoTT, Contato3 agendamentoCC){
+	public Agendamento(Data agendamentoDD, Time agendamentoTT, Contato agendamentoCC){
 		this.agendamentoD = agendamentoDD;
 		this.agendamentoT = agendamentoTT;
 		this.agendamentoC = agendamentoCC;
@@ -11,7 +11,7 @@ public class Agendamento{
 	
 	//setters:
 	
-	public void setData(Date3 da){
+	public void setData(Data da){
 		agendamentoD = da;
 	}
 	
@@ -19,17 +19,17 @@ public class Agendamento{
 		agendamentoT = ti;
 	}
 	
-	public void setContato(Contato3 co){
+	public void setContato(Contato co){
 		agendamentoC = co;
 	}
 	
 	//getters:
 	
-	public Date3 getData(){
+	public Data getData(){
 		return agendamentoD;
 	}
 	
-	public Contato3 getContato(){
+	public Contato getContato(){
 		return agendamentoC;
 	}
 	
@@ -44,7 +44,7 @@ public class Agendamento{
 		System.exit(-1);
 	}
 	
-	public void agendar(Date3 outraData, Time outroTime) {
+	public void agendar(Data outraData, Time outroTime) {
 		if(verificarAgendamento(outraData, outroTime)){
 			//agendamentoC = contato;
 			agendamentoD = outraData;
@@ -54,7 +54,7 @@ public class Agendamento{
 		}
 	}
 	
-	public boolean verificarAgendamento(Date3 outraData, Time outroTime) { //retorna true se a data e hora do parametro está disponível e false caso contrário.
+	public boolean verificarAgendamento(Data outraData, Time outroTime) { //retorna true se a data e hora do parametro está disponível e false caso contrário.
 		if(agendamentoD == outraData && agendamentoT == outroTime ){
 			return false;
 		} else{
