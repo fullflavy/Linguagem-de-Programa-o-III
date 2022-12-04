@@ -1,11 +1,9 @@
-/*lista 03: Usando como base a classe Contato desenvolvida na lista anterior, execute o refatoramento da classe incluindo o construtor da mesma e validações para os atributos.*/
-
-public class Contato3{
+public class Contato{
 	private String nome, email, telefone;
 	private int dia, mes, ano;
 	private int diaAtual = 31, mesAtual = 12, anoAtual = 2022, tempo;          
 	
-	public Contato3(String nome, String email, String telefone, int dia, int mes, int ano){  //completo
+	public Contato(String nome, String email, String telefone, int dia, int mes, int ano){  //completo
         this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
